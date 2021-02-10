@@ -1,1 +1,51 @@
 # Randomized-Ensembled-Double-Q-learning-REDQ-
+
+PyTorch implementation of Randomized-Ensembled-Double-Q-learning-REDQ.
+This repo contains a [notebook](https://github.com/BY571/Randomized-Ensembled-Double-Q-learning-REDQ-/blob/main/REDQ-notebook.ipynb) version and a script version to run REDQ or SAC.
+
+For more information about REDQ check out the [paper](https://openreview.net/pdf?id=AY8zfZm0tDd) or checkout my [medium article](https://medium.com/analytics-vidhya/randomized-ensembled-double-q-learning-learning-fast-without-a-model-11b25e2fc3a8) about it.
+
+#### Dependencies
+Trained and tested on:
+<pre>
+Python 3.6
+PyTorch 1.7.0  
+Numpy 1.15.2 
+gym 0.10.11 
+pybulletgym
+</pre>
+
+## How to use:
+The new script combines all extensions and the add-ons can be simply added by setting the corresponding flags.
+
+`python train.py -info redq`
+
+### Results
+
+
+![Pendulum](img/Pendulum_REDQ_5-2-5.jpg)
+
+
+
+### ToDos:
+
+- Currently this REDQ version supports only a subsample size of 2 for the REDQ hyperparameter M, however, this repository will be updated over time.
+- Do comparison runs for REDQ and SAC
+- add requirements.txt
+
+
+## Author
+- Sebastian Dittert
+
+**Feel free to use this code for your own projects or research.**
+```
+@misc{REDQ,
+  author = {Dittert, Sebastian},
+  title = {PyTorch Implementation of Randomized-Ensembled-Double-Q-learning-REDQ-},
+  year = {2020},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/BY571/Randomized-Ensembled-Double-Q-learning-REDQ-}},
+}
+```  
+
