@@ -4,7 +4,7 @@ PyTorch implementation of Randomized-Ensembled-Double-Q-learning-REDQ.
 This repo contains a [notebook](https://github.com/BY571/Randomized-Ensembled-Double-Q-learning-REDQ-/blob/main/REDQ-notebook.ipynb) version and a script version to run REDQ or SAC.
 
 For more information about REDQ check out the [paper](https://openreview.net/pdf?id=AY8zfZm0tDd) or checkout my [medium article](https://medium.com/analytics-vidhya/randomized-ensembled-double-q-learning-learning-fast-without-a-model-11b25e2fc3a8) about it.
-
+In the future I will add REDQ to my [Soft-Actor-Critic-and-Extensions](https://github.com/BY571/Soft-Actor-Critic-and-Extensions) repository so you can combine it with several other performance increasing extensions like PER, D2RL or Munchausen RL.
 #### Dependencies
 Trained and tested on:
 <pre>
