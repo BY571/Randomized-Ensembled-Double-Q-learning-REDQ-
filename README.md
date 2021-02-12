@@ -20,6 +20,12 @@ The new script combines all extensions and the add-ons can be simply added by se
 
 `python train.py -info redq`
 
+
+To train SAC simply set the REDQ specific parameter to (N=2, M=2, G=1).
+
+ `python train.py --N 2 --M 2 --G 1 -info sac`
+
+
 #### Observe training results
 `tensorboard --logdir=runs`
 
