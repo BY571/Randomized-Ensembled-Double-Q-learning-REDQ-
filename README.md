@@ -20,6 +20,9 @@ The new script combines all extensions and the add-ons can be simply added by se
 
 `python train.py -info redq`
 
+#### Observe training results
+`tensorboard --logdir=runs`
+
 ### Results
 
 REDQ trained with N=5,M=2,G=5 (REDQ actually recommends 10,2,20) However, for faster training I trained with the adapted parameters. If someone finds a way to speed up training please let me know. with N=10, G=20 it takes ~ 10x longer when compared to regular SAC.
@@ -30,7 +33,8 @@ REDQ trained with N=5,M=2,G=5 (REDQ actually recommends 10,2,20) However, for fa
 ### ToDos:
 
 - Currently this REDQ version supports only a subsample size of 2 for the REDQ hyperparameter M, however, this repository will be updated over time.
-- Do comparison runs for REDQ and SAC
+- Do comparison runs for REDQ and SAC [ currently running for pybullet environments like cheetah, hopper]
+- improve training speed (wall-clock time)
 - add requirements.txt
 
 
