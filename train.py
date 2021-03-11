@@ -51,10 +51,11 @@ def train(args):
     state = env.reset()
     state = state.reshape((1, state_size))
     score = 0
-    for frame in range(1, args.frames+1):
+    steps = args.frames
+    for step in range(1, steps+1):
         # eval runs
-        if frame % args.eval_every == 0 or frame == 1:
-            evaluate(frame, args.eval_runs)
+        if step % args.eval_every == 0 or step == 1:
+            evaluate(step, args.eval_runs)
 
 
         action = agent.act(state)
@@ -71,14 +72,14 @@ def train(args):
             scores_deque.append(score)
             scores.append(score)
             average_100_scores.append(np.mean(scores_deque))
-            writer.add_scalar("Average100", np.mean(scores_deque), frame)
-            writer.add_scalar("Train_Reward", score, frame)
+            writer.add_scalar("Average100", np.mean(scores_deque), step)
+            writer.add_scalar("Train_Reward", score, step)
             state = env.reset()
             state = state.reshape((1, state_size))
             
-            print('\rEpisode {} Train_Reward: {:.2f}  Average100 Score: {:.2f}'.format(i_episode, score, np.mean(scores_deque)), end="")
+            print('\rEpisode {}  Env. Step: [{}/{}] Train_Reward: {:.2f}  Average100 Score: {:.2f}'.format(i_episode, step, steps, score, np.mean(scores_deque)), end="")
             if i_episode % args.print_every == 0:
-                print('\rEpisode {}  Train_Reward: {:.2f}  Average100 Score: {:.2f}'.format(i_episode, score, np.mean(scores_deque)))
+                print('\rEpisode {}  Env. Step: [{}/{}] Train_Reward: {:.2f}  Average100 Score: {:.2f}'.format(i_episode,  step, steps, score, np.mean(scores_deque)))
             score = 0 
             i_episode += 1
 

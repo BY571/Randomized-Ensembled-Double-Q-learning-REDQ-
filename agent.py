@@ -71,15 +71,15 @@ class REDQ_Agent():
         # Critic Network (w/ Target Network)
         self.critics = []
         self.target_critics = []
-        self.optims = []
+        parameter = []
         for i in range(self.N):
             critic = Critic(state_size, action_size, i, hidden_size=hidden_size).to(device)
 
-            optimizer = optim.Adam(critic.parameters(), lr=lr, weight_decay=0)
-            self.optims.append(optimizer)
             self.critics.append(critic)
+            parameter += list(critic.parameters())
             target = Critic(state_size, action_size, i, hidden_size=hidden_size).to(device)
             self.target_critics.append(target)
+        self.optimizer = optim.Adam(params=parameter, lr=lr)
 
 
         # Replay memory
@@ -142,15 +142,19 @@ class REDQ_Agent():
         Q_targets = rewards.cpu() + (self.gamma * (1 - dones.cpu()) * Q_target_next.cpu())
 
         # Compute critic losses and update critics 
-        for critic, optim, target in zip(self.critics, self.optims, self.target_critics):
+        Combined_loss = 0
+        for critic, target in zip(self.critics, self.target_critics):
             Q = critic(states, actions).cpu()
             Q_loss = 0.5*F.mse_loss(Q, Q_targets)
+            Combined_loss = Combined_loss + Q_loss
         
-            # Update critic
-            optim.zero_grad()
-            Q_loss.backward()
-            optim.step()
-            # soft update of the targets
+
+        # Update critic
+        self.optimizer.zero_grad()
+        Combined_loss.backward()
+        self.optimizer.step()
+        # soft update of the targets
+        for critic, target in zip(self.critics, self.target_critics):
             self.soft_update(critic, target)
         
         # ---------------------------- update actor ---------------------------- #
