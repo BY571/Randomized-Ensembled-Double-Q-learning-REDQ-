@@ -34,6 +34,7 @@ To train SAC simply set the REDQ specific parameter to (N=2, M=2, G=1).
 REDQ trained with N=5,M=2,G=5 (REDQ actually recommends 10,2,20) However, for faster training I trained with the adapted parameters. If someone finds a way to speed up training please let me know. with N=10, G=20 it takes ~ 10x longer when compared to regular SAC.
 ![Pendulum](img/Pendulum_REDQ_5-2-5.jpg)
 
+![LunarLanderContinuous](imgs/LunarLanderContinuous-v2.png)
 
 
 ### ToDos:
